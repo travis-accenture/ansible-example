@@ -1,0 +1,11 @@
+- hosts: servers
+  tasks:
+    - name: create a directory
+      file:
+        path: /home/centos/test_dir
+        state: directory
+
+    - name: 
+        src: test.txt
+        dest: /home/centos/test_dir/test.txt
+        
