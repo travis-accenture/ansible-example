@@ -1,12 +1,24 @@
 - hosts: servers
+  gather_facts: false
   tasks:
   - name: create a directory
     file:
       path: /home/centos/test_dir
       state: directory
 
-  - name: 
+  - name: copy text file
     copy:
       src: test.txt
       dest: /home/centos/test_dir/test.txt
         
+  - name: copy script file
+    copy:
+      src: test.sh
+      dest: /home/centos/test_dir/test.sh
+
+  - name: print file
+    shell: "cat /home/centos/test_dir/test.txt"
+    register: result
+
+  - debug:
+      var: result.stdout_lines

@@ -1,0 +1,14 @@
+- hosts: servers
+  gather_facts: false
+  tasks:
+  - name: edit permissions 
+    file:
+      path: /home/centos/test_dir/test.sh
+      mode: '0777'
+
+  - name: execute script
+    shell: "/home/centos/test_dir/test.sh"
+    register: result
+
+  - debug: 
+      var: result.stdout_lines
