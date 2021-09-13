@@ -6,6 +6,7 @@
       state: directory
 
   - name: 
+    copy:
       src: test.txt
       dest: /home/centos/test_dir/test.txt
         
