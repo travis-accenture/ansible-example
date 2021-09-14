@@ -1,0 +1,21 @@
+- name: create role file
+  file:
+    path: /home/centos/rolefile.txt
+    state: touch
+
+- name: put text in file
+  shell: 'echo hello there! from role > rolefile.txt'
+
+- name: print text
+  shell: 'cat rolefile.txt'
+  register: result
+
+- debug:
+    var: result.stdout_lines
+
+- name: delete file
+  file: 
+    path: /home/centos/rolefile.txt
+    state: absent  
+
+
